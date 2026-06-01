@@ -1,0 +1,74 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage[russian]{babel}
+
+\begin{document}
+
+\begin{center}
+\section*{\S3 \qquad Метод разделения переменных}
+\end{center}
+и начальные условия в виде рядов Фурье:
+\[ 
+\begin{cases}
+f(x, t) = \sum_{n=1}^\infty f_n(t) \sin \frac{\pi n}{l} x, \quad f_n(t) = \frac{2}{l} \int_0^l f(\xi, t) \sin \frac{\pi n}{l} \xi \, d\xi; \\
+\varphi(x) = \sum_{n=1}^\infty \varphi_n \sin \frac{\pi n}{l} x, \quad \varphi_n = \frac{2}{l} \int_0^l \varphi(\xi, t) \sin \frac{\pi n}{l} \xi \, d\xi; \\
+\psi(x) = \sum_{n=1}^\infty \psi_n \sin \frac{\pi n}{l} x, \quad \psi_n = \frac{2}{l} \int_0^l \psi(\xi, t) \sin \frac{\pi n}{l} \xi \, d\xi; 
+\end{cases} \tag{49}
+\]
+
+Подставляя предполагаемую форму решения (48) в исходное уравнение (45):
+\[ \sum_{n=1}^\infty \sin \frac{\pi n}{l} x \left\{ -a^2 \left( \frac{\pi n}{l} \right)^2 u_n(t) - \ddot{u}_n(t) + f_n(t) \right\} = 0, \]
+
+видим, что оно будет удовлетворено, если все коэффициенты разложения равны нулю, т.е.
+\[ \ddot{u}_n(t) + \left( \frac{\pi n}{l} \right)^2 a^2 u_n(t) = f_n(t). \tag{50}\]
+
+Для определения \(u_n(t)\) мы получили обыкновенное дифференциальное уравнение с постоянными коэффициентами. Начальные условия дают:
+\[ u(x, 0) = \varphi(x) = \sum_{n=1}^\infty u_n(0) \sin \frac{\pi n}{l} x = \sum_{n=1}^\infty \varphi \sin \frac{\pi n}{l} x \]
+\[ u_t(x, 0) = \psi(x) = \sum_{n=1}^\infty \dot{u}_n(0) \sin \frac{\pi n}{l} x = \sum_{n=1}^\infty \psi \sin \frac{\pi n}{l} x \]
+
+откуда следует:
+\[
+\begin{cases} 
+u_n(0) = \varphi_n, \\ 
+\dot{u}_n(0) = \psi_n. 
+\end{cases} \tag{51}
+\]
+
+Эти дополнительные условия полностью определяют решение уравнения (50). Функцию \(u_n(t)\) можно представить в виде
+\[ u_n(t) = u_n^{(I)}(t) + u_n^{(lI)}(t), \]
+
+где 
+\[ u_n^{(I)}(t) = \frac{l}{\pi n a} \int_0^t \sin \frac{\pi n}{l} a(t - \tau) \cdot f_n(\tau) \, d\tau \tag{52} \]
+
+\newpage
+
+\begin{center}
+\section*{98 \qquad Уравнения гиперболического типа}
+\end{center}
+
+есть решение неоднородного уравнения с нулевыми начальными условиями
+\[ u_n^{(Il)}(t) = \varphi_n \cos \frac{\pi n}{l} a t + \frac{l}{\pi n a} \psi_n \sin \frac{\pi n}{l} a t \tag{53} \]
+
+-- решение однородного уравнения с заданными начальными условиями. Таким образом, искомое решение запишется в виде
+
+\[ u(x, t) = \sum_{n=1}^\infty \frac{1}{\pi n a} \int_0^t \sin \frac{\pi n}{l} a(t - \tau) \sin \frac{\pi n}{l} x \cdot f_n(\tau) \, d\tau + \]
+\[ + \sum_{n=1}^\infty \left( \varphi_n \cos \frac{\pi n}{l} a t + \frac{l}{\pi n a} \psi_n \sin \frac{\pi n}{l} a t \right) \sin \frac{\pi n}{l} x \tag{54} \]
+
+вторая сумма представляет решение задачи о свободных колебаниях струны при заданных начальных условиях и была нами исследована ранее достаточно подробно. Обратимся к изучению первой суммы, представляющей вынужденные колебания струны под действием внешней силы при нулевых начальных условиях. Пользуясь выражением (49) для \(f_n(t)\), находим:
+\[ u^{(I)}(x, t) = \]
+\[ = \int_0^t \int_0^l \left\{ \frac{2}{l} \sum_{n=1}^\infty \frac{1}{\pi n a} \sin \frac{\pi n}{l} a(t - \tau) \sin \frac{\pi n}{l} x \sin \frac{\pi n}{l} \xi \right\} f(\xi, \tau) \, d\xi \, d\tau = \]
+\[ = \int_0^t \int_0^l G(x, \xi, t - \tau) f(\xi, \tau) \, d\xi \, d\tau, \tag{55} \]
+
+где
+\[ G(x, \xi, t - \tau) = \frac{2}{\pi a} \sum_{n=1}^\infty \frac{1}{n} \sin \frac{\pi n}{l} a(t - \tau) \sin \frac{\pi n}{l} x \sin \frac{\pi n}{l} \xi \tag{56} \]
+
+Выясним физический смысл полученного решения. Пусть функция \(f(\xi, \tau)\) отлична от нуля в достаточно малой окрестности точки \(M_0(\xi_0, \tau_0)\) :
+\[ \xi_0 \le \xi \le \xi_0 + \Delta\xi , \qquad \tau_0 \le \tau \le \tau_0 + \Delta\tau \]
+
+Функция \(\rho(f(\xi, \tau))\) представляет плотность действующей силы; сила, приложенная к участку \((\xi_0, \xi_0 + \Delta \xi)\), равна
+\[ F(\tau) = \rho \int_{\xi_0}^{\xi_0 + \Delta \xi} f(\xi, \tau) \, d\xi, \]
+
+
+\end{document}
